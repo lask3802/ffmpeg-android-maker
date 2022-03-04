@@ -41,8 +41,15 @@ DEP_LD_FLAGS="-L${BUILD_DIR_EXTERNAL}/${ANDROID_ABI}/lib $FFMPEG_EXTRA_LD_FLAGS"
   --strip=${FAM_STRIP} \
   --extra-cflags="-O3 -fPIC $DEP_CFLAGS" \
   --extra-ldflags="$DEP_LD_FLAGS" \
+  --enable-small \
+  --disable-programs \
+  --disable-doc \
   --enable-shared \
   --disable-static \
+  --disable-everything \
+  --enable-parser=vorbis,adpcm \
+  --enable-decoder=mp3,vorbis,adpcm \
+  --enable-demuxer=mp3,ogg,wav \
   --pkg-config=${PKG_CONFIG_EXECUTABLE} \
   ${EXTRA_BUILD_CONFIGURATION_FLAGS} \
   $ADDITIONAL_COMPONENTS || exit 1
